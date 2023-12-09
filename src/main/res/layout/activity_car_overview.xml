@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:padding="16dp"
+    tools:context=".CarOverview">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/carCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/carImageView"
+                    style="@style/Widget.MaterialComponents.ShapeableImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:scaleType="fitCenter" />
+
+                <TextView
+                    android:id="@+id/carNameTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    android:text="Car Name"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="#1E88E5"
+                    android:textStyle="bold" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Price per Day:"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="#4CAF50"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:layout_editor_absoluteX="90dp" />
+
+                    <TextView
+                        android:id="@+id/carPriceTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:gravity="center"
+                        android:text="$0.00"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="#4CAF50"
+
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/textView3"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/carDescTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="'This is a description of the car'."
+                    android:textColor="#6D6C6C"
+                    android:textSize="15dp" />
+
+                <!-- Table for detailed info -->
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+
+                    android:padding="1dp">
+
+                    <!-- Row for Mileage Limit -->
+                    <TableRow
+                        android:layout_marginBottom="30px"
+                        android:background="#EDECEC">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:text="Mileage Limit:" />
+
+                        <TextView
+                            android:id="@+id/mileageLimitTextView"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:padding="8dp"
+                            android:text="0 km/day"
+                            android:textStyle="bold" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_marginBottom="30px"
+                        android:background="#EDECEC">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:text="Fuel Type:" />
+
+
+                        <TextView
+                            android:id="@+id/fuelTypeTextView"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:padding="8dp"
+                            android:text="Petrol"
+                            android:textStyle="bold" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_marginBottom="30px"
+                        android:background="#EDECEC">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:text="Transmission Type:" />
+
+
+                        <TextView
+                            android:id="@+id/transmissionTypeTextView"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:padding="8dp"
+                            android:text="Automatic"
+                            android:textStyle="bold" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_marginBottom="30px"
+                        android:background="#EDECEC">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:text="Number of Seats:" />
+
+                        <TextView
+                            android:id="@+id/numberOfSeatsTextView"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:padding="8dp"
+                            android:text="5"
+                            android:textStyle="bold" />
+                    </TableRow>
+
+                    <TableRow android:background="#EDECEC">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:text="Availability Status: " />
+
+                        <TextView
+                            android:id="@+id/availabilityStatusTextView"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:padding="8dp"
+                            android:text="Available"
+                            android:textStyle="bold" />
+                    </TableRow>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/rentCarButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="Rent Car"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="#FFFFFF"
+                        app:backgroundTint="#1E87E4"
+                        app:cornerRadius="4dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/backButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Back to Home"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="#FFFFFF"
+                        app:backgroundTint="#424547"
+                        app:cornerRadius="4dp" />
+
+
+                </TableLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

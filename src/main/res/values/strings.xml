@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">SWE401SWE2009867</string>
+    <string name="price"> $%1$.2f</string>
+    <string name="desc"> %1$d km/day</string>
+    <string name="mileage"> %1$d km/day</string>
+    <string name="fuel"> %1$s</string>
+    <string name="transmission"> %1$s</string>
+    <string name="seats"> %1$d</string>
+    <string name="availability"> %1$s</string>
+
+        <string-array name="rental_duration_options">
+            <item>days</item>
+            <item>weeks</item>
+            <item>months</item>
+        </string-array>
+    </resources>
+
+
