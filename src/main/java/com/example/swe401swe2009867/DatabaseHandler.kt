@@ -4,6 +4,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import com.example.swe401swe2009867.Car
+import com.example.swe401swe2009867.Rental
 
 class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -144,6 +145,43 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
         cursor?.close()
         db.close()
         return true
+    }
+
+
+    fun getAllRentalsByUserId(userId: Int): List<Rental> {
+        val rentalList = mutableListOf<Rental>()
+        val db = this.readableDatabase
+
+        // Query to find all rentals for the user
+        val cursor = db.query(
+            "rental", // Table name
+            null, // Passing null will return all columns
+            "user = ?", // Selection criteria
+            arrayOf(userId.toString()), // Selection arguments
+            null, // Group by
+            null, // Having
+            null // Order by
+        )
+
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getInt(cursor.getColumnIndex("id"))
+                val carId = cursor.getInt(cursor.getColumnIndex("car"))
+                val name = cursor.getString(cursor.getColumnIndex("name"))
+                val ic = cursor.getString(cursor.getColumnIndex("ic"))
+                val duration = cursor.getString(cursor.getColumnIndex("duration"))
+                val startDate = cursor.getString(cursor.getColumnIndex("start"))
+                val price = cursor.getDouble(cursor.getColumnIndex("price"))
+
+                val rental = Rental(id, userId, carId, name, ic, duration, startDate, price)
+                rentalList.add(rental)
+            } while (cursor.moveToNext())
+        }
+
+        cursor.close()
+        db.close()
+
+        return rentalList
     }
 
 }

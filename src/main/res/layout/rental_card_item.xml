@@ -19,6 +19,7 @@
         android:background="#7A7A7A"/>
 
     <ImageView
+        android:id="@+id/carImage"
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:src="@drawable/audi"/>
@@ -36,7 +37,7 @@
             android:text="Car: Audi" />
 
         <TextView
-            android:id="@+id/tvRentalDetails"
+            android:id="@+id/tvDuration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Rental Duration: " />

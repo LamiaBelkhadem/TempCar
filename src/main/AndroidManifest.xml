@@ -15,6 +15,9 @@
             android:name=".CarOverview"
             android:exported="false" />
         <activity
+        android:name=".RentalListActivity"
+        android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity

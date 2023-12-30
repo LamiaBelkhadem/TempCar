@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val rentals: Button = findViewById(R.id.rentalsButton)
 
         carRecyclerView = findViewById(R.id.carRecyclerView)
         carRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -68,6 +69,11 @@ class MainActivity : AppCompatActivity() {
         val adapter = CarAdapter(carsFromDatabase, userId)
         carRecyclerView.adapter = adapter
 
+        rentals.setOnClickListener {
+            val intent = Intent(this, RentalListActivity::class.java)
+
+            startActivity(intent)
+        }
     }
 
     class CarAdapter(private val carList: List<Car>, private val userId: Int) :
