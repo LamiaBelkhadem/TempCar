@@ -103,6 +103,8 @@ class RentalInfoActivity : AppCompatActivity() {
 }
             // Start the ConfirmationActivity
             val intent = Intent(this, ConfirmationActivity::class.java)
+            intent.putExtra("userId", userId)
+
             startActivity(intent)
         }
 

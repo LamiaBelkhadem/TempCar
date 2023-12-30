@@ -22,13 +22,11 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        // Initialize views
         editTextUsername = findViewById(R.id.editTextUsername)
         editTextPassword = findViewById(R.id.editTextPassword)
         buttonLogin = findViewById(R.id.buttonLogin) // Note: Check the ID
         textViewRegister = findViewById(R.id.textView2)
 
-        // Set up click listeners
         buttonLogin.setOnClickListener { loginUser() }
         textViewRegister.setOnClickListener { navigateToRegister() }
     }
@@ -41,30 +39,28 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(this, "Please enter both username and password", Toast.LENGTH_SHORT).show()
             return
         }
+        if (username.equals("ADMIN", ignoreCase = true) && password.equals("ADMIN", ignoreCase = true)) {
+            // Redirect to AdminClass
+            val adminIntent = Intent(this, AdminHomeActivity::class.java)
+            startActivity(adminIntent)
+            finish()
+            return}
 
 
-
-        // Create an instance of your DatabaseHandler
         val dbHelper = DatabaseHandler(this)
 
-        // Get a readable database
         val db = dbHelper.readableDatabase
 
-        // Define the columns you want to retrieve
         val projection = arrayOf("id")
 
-        // Define the selection criteria
         val selection = "username = ? AND password = ?"
         val selectionArgs = arrayOf(username, password)
 
-        // Query the 'user' table for the given username and password
         val cursor = db.query("user", projection, selection, selectionArgs, null, null, null)
 
         if (cursor.moveToFirst()) {
-            // User found, proceed to login
             Toast.makeText(applicationContext, "Login successful", Toast.LENGTH_SHORT).show()
 
-            // Optionally, you can navigate to the main activity
             val intent = Intent(this@LoginActivity, MainActivity::class.java)
             val userId= dbHelper.getUserIdByUsername(username)
             intent.putExtra("userId", userId)
@@ -72,11 +68,9 @@ class LoginActivity : AppCompatActivity() {
 
             finish() // Close the LoginActivity
         } else {
-            // User not found or password incorrect
             Toast.makeText(applicationContext, "Invalid username or password", Toast.LENGTH_SHORT).show()
         }
 
-        // Close the cursor and the database when done
         cursor.close()
         db.close()
     }

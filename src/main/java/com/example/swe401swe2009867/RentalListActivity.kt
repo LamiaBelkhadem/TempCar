@@ -3,6 +3,7 @@ package com.example.swe401swe2009867
 import DatabaseHandler
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 data class Rental(
@@ -37,11 +39,15 @@ class RentalListActivity : AppCompatActivity() {
         val userId = intent.getIntExtra("userId", 0)
         val databaseHandler = DatabaseHandler(this)
         val rentals = databaseHandler.getAllRentalsByUserId(userId)
-
-        val adapter = RentalAdapter(rentals)
+        if (rentals.isNotEmpty()) {
+            Log.d("RentalListActivity", "Rentals: $rentals")
+        } else {
+            Log.d("RentalListActivity", "No rentals found for user ID: $userId")
+        }
+        val adapter = RentalAdapter(rentals,databaseHandler,userId)
         rentalRecyclerView.adapter = adapter
     }
-    class RentalAdapter(private val rentals: List<Rental>) : RecyclerView.Adapter<RentalAdapter.RentalViewHolder>() {
+    class RentalAdapter(private val rentals: List<Rental>,private val dbHandler: DatabaseHandler, private val userId: Int) : RecyclerView.Adapter<RentalAdapter.RentalViewHolder>() {
 
         class RentalViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val tvRentalName: TextView = view.findViewById(R.id.tvRentalName)
@@ -62,6 +68,13 @@ class RentalListActivity : AppCompatActivity() {
 
         override fun onBindViewHolder(holder: RentalViewHolder, position: Int) {
             val rental = rentals[position]
+            val car=dbHandler.getCarById(rental.carId)
+            if (car != null) {
+
+                holder.tvCar.text = "Car: ${car.name}"
+                holder.ivCarImage.setImageResource(car.imageResId)
+
+            }
             holder.tvRentalName.text = rental.name
             // Bind other views with rental data
             //holder.ivCarImage.setImageResource(rental.imageResId)
@@ -72,13 +85,27 @@ class RentalListActivity : AppCompatActivity() {
 
 
 
-            // Handle edit and delete button clicks
             holder.btnEdit.setOnClickListener {
-                // Handle edit action
+                val context = holder.itemView.context // Get the context from the itemView
+                val intent = Intent(context, RentalActivity::class.java)
+                intent.putExtra("rentalId", rental.id)
+                intent.putExtra("carId", rental.carId)
+                Log.d("rental IDDD",rental.id.toString())
+                intent.putExtra("userId", userId)
+
+                context.startActivity(intent)
             }
+
             holder.btnDelete.setOnClickListener {
-                // Handle delete action
-            }
+
+                val isDeleted = dbHandler.deleteRentalById(rental.id)
+                if (isDeleted) {
+                    notifyItemRemoved(position)
+                    Log.d("RentalAdapter", "Rental with ID: ${rental.id} deleted.")
+                } else {
+                    Log.d("RentalAdapter", "Failed to delete rental with ID: ${rental.id}.")
+                }
+                        }
         }
 
         override fun getItemCount() = rentals.size

@@ -71,6 +71,7 @@ class MainActivity : AppCompatActivity() {
 
         rentals.setOnClickListener {
             val intent = Intent(this, RentalListActivity::class.java)
+            intent.putExtra("userId", userId)
 
             startActivity(intent)
         }

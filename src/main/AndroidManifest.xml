@@ -17,6 +17,14 @@
         <activity
         android:name=".RentalListActivity"
         android:exported="false" />
+
+        <activity
+            android:name=".AdminHomeActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".RentalsAllActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
@@ -32,6 +40,9 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserListActivity"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"

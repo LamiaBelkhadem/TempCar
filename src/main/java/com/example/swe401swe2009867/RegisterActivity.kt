@@ -22,14 +22,12 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        // Initialize views
         editTextUsername = findViewById(R.id.editTextUsername)
         editTextEmail = findViewById(R.id.editTextEmail)
         editTextPassword = findViewById(R.id.editTextPassword)
         buttonRegister = findViewById(R.id.buttonRegister)
         buttonLogin = findViewById(R.id.buttonLogin)
 
-        // Set up click listeners
         buttonRegister.setOnClickListener { registerUser() }
         buttonLogin.setOnClickListener { navigateToLogin() }
     }
@@ -46,7 +44,6 @@ class RegisterActivity : AppCompatActivity() {
 
         val dbHelper = DatabaseHandler(this)
 
-        // Get a writable database
         val db = dbHelper.writableDatabase
 
         val values = ContentValues()
@@ -57,10 +54,8 @@ class RegisterActivity : AppCompatActivity() {
         val newRowId = db.insert("user", null, values)
 
         if (newRowId != -1L) {
-            // Registration successful
             Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show()
 
-            // Optionally, you can navigate to the login activity
             navigateToLogin()
         } else {
             // Registration failed
