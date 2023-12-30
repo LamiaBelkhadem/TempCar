@@ -49,9 +49,11 @@ class RegisterActivity : AppCompatActivity() {
             userDao.insertUser(user)
             withContext(Dispatchers.Main) {
                 Toast.makeText(applicationContext, "User registered successfully", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this@RegisterActivity, MainActivity::class.java)
-                startActivity(intent)
+
             }
+
         }
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
     }
 }
