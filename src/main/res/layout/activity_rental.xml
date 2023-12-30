@@ -35,18 +35,18 @@
             android:padding="16dp">
 
             <EditText
-                android:id="@+id/usernameEditText"
+                android:id="@+id/nameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter your name"
+                android:hint="Enter your Legal Name"
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/emailEditText"
+                android:id="@+id/icEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:hint="Enter your email"
+                android:hint="Enter your IC Number"
                 android:inputType="textEmailAddress" />
 
             <TextView

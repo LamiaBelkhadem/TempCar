@@ -55,7 +55,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:padding="8dp"
-                        android:text="Name: "
+                        android:text="Legal Name: "
                         android:textSize="18sp" />
 
                     <TextView
@@ -75,7 +75,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:padding="8dp"
-                        android:text="Email: "
+                        android:text="IC: "
                         android:textSize="18sp" />
 
                     <TextView

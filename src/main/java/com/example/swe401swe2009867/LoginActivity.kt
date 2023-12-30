@@ -66,7 +66,10 @@ class LoginActivity : AppCompatActivity() {
 
             // Optionally, you can navigate to the main activity
             val intent = Intent(this@LoginActivity, MainActivity::class.java)
+            val userId= dbHelper.getUserIdByUsername(username)
+            intent.putExtra("userId", userId)
             startActivity(intent)
+
             finish() // Close the LoginActivity
         } else {
             // User not found or password incorrect

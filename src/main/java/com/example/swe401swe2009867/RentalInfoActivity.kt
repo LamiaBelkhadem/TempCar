@@ -1,5 +1,6 @@
 package com.example.swe401swe2009867
 
+import DatabaseHandler
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -20,10 +21,13 @@ class RentalInfoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_rent_info)
         val backButton: Button = findViewById(R.id.backButton)
         val confirmButton: Button = findViewById(R.id.confirmButton)
-
+        val carName = intent.getStringExtra("carName") ?: "N/A"
         val carPrice = intent.getDoubleExtra("carPrice",0.0)
+        val userId = intent.getIntExtra(
+            "userId",0)
+
         val name = intent.getStringExtra("name") ?: "N/A"
-        val email = intent.getStringExtra("email") ?: "N/A"
+        val ic = intent.getStringExtra("ic") ?: "N/A"
         val durationNumber = intent.getDoubleExtra("durationNumber", 0.0)
         val selectedDuration = intent.getStringExtra("selectedDuration")?: "N/A"
         val date = intent.getLongExtra("date", 0L)
@@ -54,7 +58,7 @@ class RentalInfoActivity : AppCompatActivity() {
 
 
         nametv.text = name
-        emailtv.text=email
+        emailtv.text=ic
         durationtv.text= "${durationNumber.toString()} ${selectedDuration.toString()}"
         rentPricetv.text="${rentPrice.toString()} $"
         taxtv.text="${tax.toString()} $"
@@ -81,8 +85,24 @@ class RentalInfoActivity : AppCompatActivity() {
         }
 
         confirmButton.setOnClickListener {
+            val databaseHandler = DatabaseHandler(this)
+            val carId = databaseHandler.getCarIdByName(carName)
+            Log.d("carIDDDD:",carId.toString())
+            Log.d(userId.toString(), carId.toString())
+            if(carId!=null &&userId!=null) {
+    // Insert the rental into the database
+    databaseHandler.insertRental(
+        userId,
+        carId,
+        name,
+        ic,
+        "${durationNumber.toString()} ${selectedDuration.toString()}",
+        dateString,
+        totalPrice
+    )
+}
+            // Start the ConfirmationActivity
             val intent = Intent(this, ConfirmationActivity::class.java)
-
             startActivity(intent)
         }
 

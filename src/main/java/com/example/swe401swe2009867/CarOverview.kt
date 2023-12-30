@@ -20,6 +20,8 @@ class CarOverview : AppCompatActivity() {
         val carName = intent.getStringExtra("carName") ?: "N/A"
         val desc = intent.getStringExtra("desc") ?: "N/A"
         val carPrice = intent.getDoubleExtra("price", 0.0)
+        val userId = intent.getIntExtra("userId", 0)
+
         val carImageResId = intent.getIntExtra("carImageResId", 0) //
         val mileage = intent.getIntExtra("mileage", 0)
         val fuel = intent.getStringExtra("fuel") ?: "N/A"
@@ -52,6 +54,10 @@ class CarOverview : AppCompatActivity() {
         rentCarButton.setOnClickListener {
             val intent = Intent(this, RentalActivity::class.java)
             intent.putExtra("carPrice", carPrice)
+            intent.putExtra("carName", carName)
+            intent.putExtra("userId", userId)
+
+
             startActivity(intent)
         }
         backButton.setOnClickListener {

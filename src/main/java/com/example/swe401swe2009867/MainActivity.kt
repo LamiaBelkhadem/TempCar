@@ -38,7 +38,12 @@ class MainActivity : AppCompatActivity() {
         carRecyclerView = findViewById(R.id.carRecyclerView)
         carRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        val carList = listOf(
+        val userId = intent.getIntExtra("userId", 0)
+
+        val databaseHandler = DatabaseHandler(this)
+        if (databaseHandler.isCarTableEmpty()) {
+            val carList = listOf(
+
             Car(R.drawable.car1, "Toyota Corolla","A reliable and fuel-efficient sedan, perfect for city driving.", 55.0, 250, "Petrol", "Automatic", 5, true),
             Car(R.drawable.hondacivic, "Honda Civic","A sporty and compact car known for its durability and smooth ride.", 60.0, 300, "Petrol", "Automatic", 5, false),
             Car(R.drawable.fordmustang, "Ford Mustang", "A classic American muscle car with high performance and iconic design.",120.0, 200, "Petrol", "Manual", 4, true),
@@ -52,21 +57,20 @@ class MainActivity : AppCompatActivity() {
             Car(R.drawable.kia, "Kia Optima", "A sleek sedan with a comfortable interior, known for its safety and reliability.", 50.0, 300, "Petrol", "Automatic", 5, true),
             Car(R.drawable.mazda, "Mazda 6", "Combining style, driving pleasure, and efficiency, this car offers a premium feel.", 59.0, 300, "Petrol", "Automatic", 5, false))
 
-
-        val databaseHandler = DatabaseHandler(this)
-
-
-        carList.forEach { car ->
-            databaseHandler.insertCar(car)
+            carList.forEach { car ->
+                databaseHandler.insertCar(car)
+            }
         }
-        val carsFromDatabase = databaseHandler.getAllCars()
 
-        val adapter = CarAdapter(carsFromDatabase)
+
+
+        val carsFromDatabase = databaseHandler.getAllCars()
+        val adapter = CarAdapter(carsFromDatabase, userId)
         carRecyclerView.adapter = adapter
 
     }
 
-    class CarAdapter(private val carList: List<Car>) :
+    class CarAdapter(private val carList: List<Car>, private val userId: Int) :
         RecyclerView.Adapter<CarAdapter.CarViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarViewHolder {
@@ -90,9 +94,13 @@ class MainActivity : AppCompatActivity() {
                 intent.putExtra("carImageResId", car.imageResId)
                 intent.putExtra("mileage", car.mileage)
                 intent.putExtra("fuel", car.fuel)
+
                 intent.putExtra("transmission", car.transmission)
                 intent.putExtra("seats", car.seats)
                 intent.putExtra("isAvailable", car.available)
+
+                intent.putExtra("userId", userId)
+
                 context.startActivity(intent)
             }
 

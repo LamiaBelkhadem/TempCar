@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#DCDCDC">
+
+    <TextView
+        android:id="@+id/tvRentalName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rental Name"
+        android:textSize="20dp"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_marginBottom="20dp"
+        android:background="#7A7A7A"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:src="@drawable/audi"/>
+
+    <LinearLayout
+        android:id="@+id/layoutExpandable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="8dp">
+        <TextView
+            android:id="@+id/tvCar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Car: Audi" />
+
+        <TextView
+            android:id="@+id/tvRentalDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rental Duration: " />
+
+        <TextView
+            android:id="@+id/tvRentalDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rental Start Date" />
+
+        <TextView
+            android:id="@+id/tvRentalPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rental Price" />
+
+        <Button
+            android:id="@+id/edit"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="edit RENTAL"
+            />
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="DELETE RENTAL"
+            android:backgroundTint="#AC2929"/>
+
+
+    </LinearLayout>
+</LinearLayout>
