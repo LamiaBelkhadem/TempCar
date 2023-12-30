@@ -1,5 +1,6 @@
 package com.example.swe401swe2009867
 
+import DatabaseHandler
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -23,6 +24,7 @@ data class Car(
     val seats: Int,
     val available: Boolean
 )
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -51,10 +53,17 @@ class MainActivity : AppCompatActivity() {
             Car(R.drawable.mazda, "Mazda 6", "Combining style, driving pleasure, and efficiency, this car offers a premium feel.", 59.0, 300, "Petrol", "Automatic", 5, false))
 
 
+        val databaseHandler = DatabaseHandler(this)
 
 
-            val adapter = CarAdapter(carList)
+        carList.forEach { car ->
+            databaseHandler.insertCar(car)
+        }
+        val carsFromDatabase = databaseHandler.getAllCars()
+
+        val adapter = CarAdapter(carsFromDatabase)
         carRecyclerView.adapter = adapter
+
     }
 
     class CarAdapter(private val carList: List<Car>) :

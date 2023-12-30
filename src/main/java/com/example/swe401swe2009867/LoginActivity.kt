@@ -1,5 +1,6 @@
 package com.example.swe401swe2009867
 
+import DatabaseHandler
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -24,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
         // Initialize views
         editTextUsername = findViewById(R.id.editTextUsername)
         editTextPassword = findViewById(R.id.editTextPassword)
-        buttonLogin = findViewById(R.id.buttonRegister) // Note: Check the ID
+        buttonLogin = findViewById(R.id.buttonLogin) // Note: Check the ID
         textViewRegister = findViewById(R.id.textView2)
 
         // Set up click listeners
@@ -41,25 +42,40 @@ class LoginActivity : AppCompatActivity() {
             return
         }
 
-        CoroutineScope(Dispatchers.IO).launch {
-            val userDao = DatabaseClient.getUserDAO(applicationContext)
-            val user = userDao.findUserByUsernameAndPassword(username, password)
 
-            withContext(Dispatchers.Main) {
-                if (user != null) {
-                    // User found, proceed to login
-                    Toast.makeText(applicationContext, "Login successful", Toast.LENGTH_SHORT).show()
-                    Log.d("LoginActivity", "Navigating to MainActivity")
-                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                    startActivity(intent)
-                    Log.d("LoginActivity", "Intent to MainActivity started")
-                    finish() // Close the LoginActivity
-                } else {
-                    // User not found or password incorrect
-                    Toast.makeText(applicationContext, "Invalid username or password", Toast.LENGTH_SHORT).show()
-                }
-            }
+
+        // Create an instance of your DatabaseHandler
+        val dbHelper = DatabaseHandler(this)
+
+        // Get a readable database
+        val db = dbHelper.readableDatabase
+
+        // Define the columns you want to retrieve
+        val projection = arrayOf("id")
+
+        // Define the selection criteria
+        val selection = "username = ? AND password = ?"
+        val selectionArgs = arrayOf(username, password)
+
+        // Query the 'user' table for the given username and password
+        val cursor = db.query("user", projection, selection, selectionArgs, null, null, null)
+
+        if (cursor.moveToFirst()) {
+            // User found, proceed to login
+            Toast.makeText(applicationContext, "Login successful", Toast.LENGTH_SHORT).show()
+
+            // Optionally, you can navigate to the main activity
+            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+            startActivity(intent)
+            finish() // Close the LoginActivity
+        } else {
+            // User not found or password incorrect
+            Toast.makeText(applicationContext, "Invalid username or password", Toast.LENGTH_SHORT).show()
         }
+
+        // Close the cursor and the database when done
+        cursor.close()
+        db.close()
     }
 
     private fun navigateToRegister() {

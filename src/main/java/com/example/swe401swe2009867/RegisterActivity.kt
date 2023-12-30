@@ -1,7 +1,9 @@
 package com.example.swe401swe2009867
-import User
+import DatabaseHandler
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -29,7 +31,7 @@ class RegisterActivity : AppCompatActivity() {
 
         // Set up click listeners
         buttonRegister.setOnClickListener { registerUser() }
-      //  buttonLogin.setOnClickListener { navigateToLogin() }
+        buttonLogin.setOnClickListener { navigateToLogin() }
     }
 
     private fun registerUser() {
@@ -42,17 +44,33 @@ class RegisterActivity : AppCompatActivity() {
             return
         }
 
-        val user = User(username = username, email = email, password = password, isAdmin = false)
+        val dbHelper = DatabaseHandler(this)
 
-        CoroutineScope(Dispatchers.IO).launch {
-            val userDao = DatabaseClient.getUserDAO(applicationContext)
-            userDao.insertUser(user)
-            withContext(Dispatchers.Main) {
-                Toast.makeText(applicationContext, "User registered successfully", Toast.LENGTH_SHORT).show()
+        // Get a writable database
+        val db = dbHelper.writableDatabase
 
-            }
+        val values = ContentValues()
+        values.put("username", username)
+        values.put("email", email)
+        values.put("password", password)
 
+        val newRowId = db.insert("user", null, values)
+
+        if (newRowId != -1L) {
+            // Registration successful
+            Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show()
+
+            // Optionally, you can navigate to the login activity
+            navigateToLogin()
+        } else {
+            // Registration failed
+            Toast.makeText(this, "Registration failed", Toast.LENGTH_SHORT).show()
         }
+        db.close()
+    }
+
+    private fun navigateToLogin() {
+
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
     }

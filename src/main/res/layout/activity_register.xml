@@ -11,9 +11,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="536dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="50dp"
         android:background="@color/white"
@@ -25,14 +25,13 @@
 
         <ImageView
             android:id="@+id/imageViewLogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="326dp"
+            android:layout_height="131dp"
             android:src="@drawable/logo"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.526"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -85,9 +84,9 @@
             android:id="@+id/buttonRegister"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:backgroundTint="@color/purple_500"
             android:text="Register"
-            android:layout_margin="20dp"
 
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -100,8 +99,8 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Already Registered?"
             android:layout_marginTop="20dp"
+            android:text="Already Registered?"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonRegister" />
@@ -110,7 +109,6 @@
             android:id="@+id/buttonLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
             android:backgroundTint="@color/purple_500"
             android:text="Login"
             android:textColor="@android:color/white"
