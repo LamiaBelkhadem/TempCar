@@ -10,5 +10,6 @@ interface UserDAO {
     @Query("SELECT * FROM User WHERE username = :username")
     fun getUserByUsername(username: String): User?
 
-    // Add other database operations as needed
+    @Query("SELECT * FROM User")
+    fun getAllUsers(): List<User>
 }
