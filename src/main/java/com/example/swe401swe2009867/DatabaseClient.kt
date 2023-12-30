@@ -16,4 +16,10 @@ object DatabaseClient {
             instance
         }
     }
+
+    fun getUserDAO(context: Context): UserDao {
+        return getDatabase(context).userDao() // Corrected method name
+    }
 }
+
+

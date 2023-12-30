@@ -15,16 +15,20 @@
             android:name=".CarOverview"
             android:exported="false" />
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".RentalActivity"
             android:exported="false" />
         <activity
             android:name=".RentalInfoActivity"
             android:exported="false" />
+
         <activity
             android:name=".ConfirmationActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".RegisterActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

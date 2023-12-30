@@ -1,4 +1,6 @@
 package com.example.swe401swe2009867
+import User
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -34,22 +36,22 @@ class RegisterActivity : AppCompatActivity() {
         val username = editTextUsername.text.toString().trim()
         val email = editTextEmail.text.toString().trim()
         val password = editTextPassword.text.toString()
+
         if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
             return
         }
+
         val user = User(username = username, email = email, password = password, isAdmin = false)
 
-        // Insert user into database
         CoroutineScope(Dispatchers.IO).launch {
-            DatabaseClient.getDatabase(applicationContext).UserDAO().insertUser(user)
+            val userDao = DatabaseClient.getUserDAO(applicationContext)
+            userDao.insertUser(user)
             withContext(Dispatchers.Main) {
                 Toast.makeText(applicationContext, "User registered successfully", Toast.LENGTH_SHORT).show()
-
-        Toast.makeText(this, "Registration logic not implemented", Toast.LENGTH_SHORT).show()
-    }
-
-    private fun navigateToLogin() {
-        Toast.makeText(this, "Login navigation not implemented", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this@RegisterActivity, MainActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 }

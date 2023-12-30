@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             Car(R.drawable.hondacivic, "Honda Civic","A sporty and compact car known for its durability and smooth ride.", 60.0, 300, "Petrol", "Automatic", 5, false),
             Car(R.drawable.fordmustang, "Ford Mustang", "A classic American muscle car with high performance and iconic design.",120.0, 200, "Petrol", "Manual", 4, true),
             Car(R.drawable.chevrolet, "Chevrolet Camaro", "An iconic sports car offering exhilarating performance and a refined interior.", 130.0, 200, "Petrol", "Manual", 4, true),
-            Car(R.drawable.bmw, "BMW 3 Series", "A luxury sedan combining performance, comfort, and technology in a sleek package.", 110.0, 300, "Diesel", "Automatic", 5, false),
+            Car(R.drawable.chevrolet, "BMW 3 Series", "A luxury sedan combining performance, comfort, and technology in a sleek package.", 110.0, 300, "Diesel", "Automatic", 5, false),
             Car(R.drawable.mercedes, "Mercedes-Benz C-Class", "Sophisticated and elegantly designed, this car offers a blend of luxury and performance.", 115.0, 300, "Diesel", "Automatic", 5, true),
             Car(R.drawable.audi, "Audi A4", "A perfect blend of luxury and innovation, known for its advanced features and smooth drive.", 100.0, 300, "Diesel", "Automatic", 5, true),
             Car(R.drawable.nissan, "Nissan Altima", "A family-friendly sedan known for its comfort, space, and fuel efficiency.", 58.0, 300, "Petrol", "Automatic", 5, true),

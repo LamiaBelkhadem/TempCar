@@ -3,7 +3,7 @@ import androidx.room.Insert
 import androidx.room.Query
 
 @Dao
-interface UserDAO {
+interface UserDao {
     @Insert
     fun insertUser(user: User)
 
