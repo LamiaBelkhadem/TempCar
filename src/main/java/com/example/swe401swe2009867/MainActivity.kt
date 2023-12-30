@@ -38,17 +38,17 @@ class MainActivity : AppCompatActivity() {
 
         val carList = listOf(
             Car(R.drawable.car1, "Toyota Corolla","A reliable and fuel-efficient sedan, perfect for city driving.", 55.0, 250, "Petrol", "Automatic", 5, true),
-            Car(R.drawable.car1, "Honda Civic","A sporty and compact car known for its durability and smooth ride.", 60.0, 300, "Petrol", "Automatic", 5, false),
-            Car(R.drawable.car1, "Ford Mustang", "A classic American muscle car with high performance and iconic design.",120.0, 200, "Petrol", "Manual", 4, true),
-            Car(R.drawable.car1, "Chevrolet Camaro", "An iconic sports car offering exhilarating performance and a refined interior.", 130.0, 200, "Petrol", "Manual", 4, true),
-            Car(R.drawable.car1, "BMW 3 Series", "A luxury sedan combining performance, comfort, and technology in a sleek package.", 110.0, 300, "Diesel", "Automatic", 5, false),
-            Car(R.drawable.car1, "Mercedes-Benz C-Class", "Sophisticated and elegantly designed, this car offers a blend of luxury and performance.", 115.0, 300, "Diesel", "Automatic", 5, true),
-            Car(R.drawable.car1, "Audi A4", "A perfect blend of luxury and innovation, known for its advanced features and smooth drive.", 100.0, 300, "Diesel", "Automatic", 5, true),
-            Car(R.drawable.car1, "Nissan Altima", "A family-friendly sedan known for its comfort, space, and fuel efficiency.", 58.0, 300, "Petrol", "Automatic", 5, true),
-            Car(R.drawable.car1, "Volkswagen Jetta", "A compact sedan that stands out with its comfortable ride and spacious interior.", 55.0, 300, "Diesel", "Automatic", 5, false),
-            Car(R.drawable.car1, "Hyundai Sonata", "A hybrid car offering a balance of efficiency, style, and high-tech features.", 53.0, 300, "Hybrid", "Automatic", 5, true),
-            Car(R.drawable.car1, "Kia Optima", "A sleek sedan with a comfortable interior, known for its safety and reliability.", 50.0, 300, "Petrol", "Automatic", 5, true),
-            Car(R.drawable.car1, "Mazda 6", "Combining style, driving pleasure, and efficiency, this car offers a premium feel.", 59.0, 300, "Petrol", "Automatic", 5, false))
+            Car(R.drawable.hondacivic, "Honda Civic","A sporty and compact car known for its durability and smooth ride.", 60.0, 300, "Petrol", "Automatic", 5, false),
+            Car(R.drawable.fordmustang, "Ford Mustang", "A classic American muscle car with high performance and iconic design.",120.0, 200, "Petrol", "Manual", 4, true),
+            Car(R.drawable.chevrolet, "Chevrolet Camaro", "An iconic sports car offering exhilarating performance and a refined interior.", 130.0, 200, "Petrol", "Manual", 4, true),
+            Car(R.drawable.bmw, "BMW 3 Series", "A luxury sedan combining performance, comfort, and technology in a sleek package.", 110.0, 300, "Diesel", "Automatic", 5, false),
+            Car(R.drawable.mercedes, "Mercedes-Benz C-Class", "Sophisticated and elegantly designed, this car offers a blend of luxury and performance.", 115.0, 300, "Diesel", "Automatic", 5, true),
+            Car(R.drawable.audi, "Audi A4", "A perfect blend of luxury and innovation, known for its advanced features and smooth drive.", 100.0, 300, "Diesel", "Automatic", 5, true),
+            Car(R.drawable.nissan, "Nissan Altima", "A family-friendly sedan known for its comfort, space, and fuel efficiency.", 58.0, 300, "Petrol", "Automatic", 5, true),
+            Car(R.drawable.volks, "Volkswagen Jetta", "A compact sedan that stands out with its comfortable ride and spacious interior.", 55.0, 300, "Diesel", "Automatic", 5, false),
+            Car(R.drawable.hyundai, "Hyundai Sonata", "A hybrid car offering a balance of efficiency, style, and high-tech features.", 53.0, 300, "Hybrid", "Automatic", 5, true),
+            Car(R.drawable.kia, "Kia Optima", "A sleek sedan with a comfortable interior, known for its safety and reliability.", 50.0, 300, "Petrol", "Automatic", 5, true),
+            Car(R.drawable.mazda, "Mazda 6", "Combining style, driving pleasure, and efficiency, this car offers a premium feel.", 59.0, 300, "Petrol", "Automatic", 5, false))
 
 
 

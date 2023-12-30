@@ -32,7 +32,7 @@ class RentalActivity : AppCompatActivity() {
             val durationNumber = textSpinner.text.toString().toDoubleOrNull() ?: 0.0
             val email = emailEditText.text.toString()
             val selectedDate =
-                calendarView.date // This returns a long representing the date in milliseconds
+                calendarView.date
             val selectedDuration = durationSpinner.selectedItem.toString()
 
             // Validate input

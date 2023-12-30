@@ -7,9 +7,9 @@
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Car Rentals"
+        android:text="Welcome to TempCar Rentals!"
         android:gravity="center"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:padding="16dp"
         android:background="#2196F3"
         android:textColor="#FFFFFF" />
